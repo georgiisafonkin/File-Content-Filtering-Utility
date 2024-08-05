@@ -7,17 +7,12 @@ import java.util.List;
 public class FileReader implements IReader {
     private String fileName;
     private BufferedReader dataReader;
-    private List<String> stringList;
-    private List<Integer> integerList;
-    private List<Float> floatList;
-
+    private Data filteredData;
     public FileReader(String fileName) {
         this.fileName = fileName;
         try {
             dataReader = new BufferedReader(new java.io.FileReader(fileName));
-            stringList = new ArrayList<>();
-            integerList = new ArrayList<>();
-            floatList = new ArrayList<>();
+            filteredData = new Data();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e); //TODO нормальная обработка исключения в случае, если указано неверное имя файла
         }
