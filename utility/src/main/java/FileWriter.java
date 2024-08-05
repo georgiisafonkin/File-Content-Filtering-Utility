@@ -17,4 +17,9 @@ public class FileWriter implements IWriter {
     public void writeData() {
 
     }
+
+    @Override
+    public Data getData() {
+        return null;
+    }
 }
