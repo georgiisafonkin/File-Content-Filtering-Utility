@@ -20,6 +20,7 @@ public class FileReader implements IReader {
         String line;
         while ((line = dataReader.readLine()) != null) {
             readData.getStringList().add(line);
+            System.out.println(line);
         }
     }
     @Override
