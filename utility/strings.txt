@@ -1,3 +1,1 @@
-Wow
-That's a test
-1E-10
+Hello World!
