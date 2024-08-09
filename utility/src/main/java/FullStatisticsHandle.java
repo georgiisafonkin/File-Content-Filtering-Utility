@@ -1,12 +1,12 @@
 public class FullStatisticsHandle extends ShortStatisticsHandle implements StatisticsHandler {
-    protected int minInt;
-    protected int maxInt;
-    protected float minFloat;
-    protected float maxFloat;
-    protected int sumInt;
-    protected float sumFloat;
-    protected int minStrLen;
-    protected int maxStrLen;
+    protected int minInt = Integer.MAX_VALUE;
+    protected int maxInt = Integer.MIN_VALUE;
+    protected float minFloat = Float.MAX_VALUE;
+    protected float maxFloat = Float.MIN_VALUE;
+    protected int sumInt = 0;
+    protected float sumFloat = 0;
+    protected int minStrLen = Integer.MAX_VALUE;
+    protected int maxStrLen = Integer.MIN_VALUE;
     @Override
     public void handleStr(String strVal) {
         super.handleStr(strVal);

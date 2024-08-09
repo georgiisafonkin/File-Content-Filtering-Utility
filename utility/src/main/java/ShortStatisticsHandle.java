@@ -1,7 +1,7 @@
 public class ShortStatisticsHandle implements StatisticsHandler {
-    protected int intElementsNumber;
-    protected int floatElementsNumber;
-    protected int strElementsNumber;
+    protected int intElementsNumber = 0;
+    protected int floatElementsNumber = 0;
+    protected int strElementsNumber = 0;
     @Override
     public void handleStr(String strVal) {
         ++strElementsNumber;
