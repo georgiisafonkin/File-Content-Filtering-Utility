@@ -1,10 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
 public class FileDataHandler implements DataHandler{
-    private String fileName;
+    private List<String> fileNames;
     private BufferedReader dataReader;
-    private RegExFilter dataFilter;
+    private DataFilter dataFilter;
+    public FileDataHandler(DataFilter dataFilter, List<String> fileNames) {
+        this.dataFilter = dataFilter;
+        this.fileNames = fileNames;
+    }
     public void handle() {
         String line;
         while (true) {
@@ -17,7 +22,7 @@ public class FileDataHandler implements DataHandler{
             dataFilter.filter(line);
         }
     }
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileNames(List<String> fileNames) {
+        this.fileNames = fileNames;
     }
 }

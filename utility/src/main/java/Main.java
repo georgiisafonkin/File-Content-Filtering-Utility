@@ -8,6 +8,7 @@ public class Main { //options: -o, -p, -a, -s, -f
         List<String> options = new ArrayList<>();
         List<String> fileNames = new ArrayList<>();
         List<String> other = new ArrayList<>();
+        String prefix = "";
         //cmd input parsing
         for (String word: args) {
             if (word.matches("-([a-zA-Z])")) {
@@ -31,11 +32,19 @@ public class Main { //options: -o, -p, -a, -s, -f
                 case "-f":
                     statisticsMode = StatisticsModes.FULL;
                     break;
+                case "-o":
+                    break;
+                case "-p":
+                    prefix = "";
+                    break;
+                case "-a":
+                    break;
                 default:
                     break;
             }
         }
         //preparation
-        DataHandler dataHandler = new FileDataHandler();
+        StatisticsHandler statisticsHandler = statisticsMode == StatisticsModes.FULL ? new FullStatisticsHandle() : new ShortStatisticsHandle();
+        DataHandler dataHandler = new FileDataHandler(new RegExFilter(new FileOutputWriter(prefix), statisticsHandler), fileNames);
     }
 }
