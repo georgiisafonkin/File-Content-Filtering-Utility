@@ -45,6 +45,14 @@ public class Main { //options: -o, -p, -a, -s, -f
         }
         //preparation
         StatisticsHandler statisticsHandler = statisticsMode == StatisticsModes.FULL ? new FullStatisticsHandle() : new ShortStatisticsHandle();
-        DataHandler dataHandler = new FileDataHandler(new RegExFilter(new FileOutputWriter(prefix), statisticsHandler), fileNames);
+        DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(prefix), statisticsHandler));
+        dataHandler.handle();
+        switch (statisticsMode) {
+            case NONE:
+                break;
+            default:
+                System.out.println(statisticsHandler.statistics());
+                break;
+        }
     }
 }
