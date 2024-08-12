@@ -1,4 +1,4 @@
-public class ShortStatisticsHandle implements StatisticsHandler {
+public class ShortStatisticsHandler implements StatisticsHandler {
     protected int intElementsNumber = 0;
     protected int floatElementsNumber = 0;
     protected int strElementsNumber = 0;

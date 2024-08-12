@@ -1,4 +1,4 @@
-public class FullStatisticsHandle extends ShortStatisticsHandle implements StatisticsHandler {
+public class FullStatisticsHandler extends ShortStatisticsHandler implements StatisticsHandler {
     protected int minInt = Integer.MAX_VALUE;
     protected int maxInt = Integer.MIN_VALUE;
     protected float minFloat = Float.MAX_VALUE;

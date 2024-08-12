@@ -8,7 +8,9 @@ public class Main { //options: -o, -p, -a, -s, -f
         List<String> options = new ArrayList<>();
         List<String> fileNames = new ArrayList<>();
         List<String> other = new ArrayList<>();
+        String path = "";
         String prefix = "";
+        boolean appendMode = false;
         //cmd input parsing
         for (String word: args) {
             if (word.matches("-([a-zA-Z])")) {
@@ -35,17 +37,17 @@ public class Main { //options: -o, -p, -a, -s, -f
                 case "-o":
                     break;
                 case "-p":
-                    prefix = "";
                     break;
                 case "-a":
+                    appendMode = true;
                     break;
                 default:
                     break;
             }
         }
         //preparation
-        StatisticsHandler statisticsHandler = statisticsMode == StatisticsModes.FULL ? new FullStatisticsHandle() : new ShortStatisticsHandle();
-        DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(prefix), statisticsHandler));
+        StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
+        DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
         dataHandler.handle();
         switch (statisticsMode) {
             case NONE:
