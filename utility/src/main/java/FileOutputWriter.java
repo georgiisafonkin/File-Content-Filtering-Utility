@@ -9,19 +9,28 @@ public class FileOutputWriter implements OutputWriter {
     private String floatOutputName = "floats.txt";
     private String path;
     private String prefix;
-    private final BufferedWriter stringsWriter;
-    private  final BufferedWriter integersWriter;
-    private  final BufferedWriter floatWriter;
+    private boolean appendMode;
+    private BufferedWriter stringsWriter = null;
+    private BufferedWriter integersWriter = null;
+    private BufferedWriter floatWriter = null;
     private boolean fileCreationFlag = false; //flag to show if File Writer created files for output or not
     public FileOutputWriter(String path, String prefix, boolean appendMode) throws IOException {
         this.path = path;
         this.prefix = prefix;
-        stringsWriter = new BufferedWriter(new FileWriter(this.path + this.prefix + stringOutputName, appendMode));
-        integersWriter = new BufferedWriter(new FileWriter(this.path + this.prefix + integerOutputName, appendMode));
-        floatWriter = new BufferedWriter(new FileWriter(this.path + this.prefix + floatOutputName, appendMode));
+        this.appendMode = appendMode;
+//        stringsWriter = new BufferedWriter(new FileWriter(path + prefix + stringOutputName, appendMode));
+//        integersWriter = new BufferedWriter(new FileWriter(path + prefix + integerOutputName, appendMode));
+//        floatWriter = new BufferedWriter(new FileWriter(path + prefix + floatOutputName, appendMode));
     }
     @Override
     public void writeInt(String intVal) {
+        if (integersWriter == null) {
+            try {
+                integersWriter = new BufferedWriter(new FileWriter(path + prefix + integerOutputName, appendMode));
+            } catch (IOException e) {
+                throw new RuntimeException("Something went wrong while creating the FileOutputWriter.\n" + e + ".");
+            }
+        }
         try {
             integersWriter.write(intVal + "\n");
             integersWriter.flush();
@@ -32,6 +41,13 @@ public class FileOutputWriter implements OutputWriter {
 
     @Override
     public void writeFloat(String floatVal) {
+        if (floatWriter == null) {
+            try {
+                floatWriter = new BufferedWriter(new FileWriter(path + prefix + floatOutputName, appendMode));
+            } catch (IOException e) {
+                throw new RuntimeException("Something went wrong while creating the FileOutputWriter.\n" + e + ".");
+            }
+        }
         try {
             floatWriter.write(floatVal + "\n");
             floatWriter.flush();
@@ -42,6 +58,13 @@ public class FileOutputWriter implements OutputWriter {
 
     @Override
     public void writeStr(String strVal) {
+        if (stringsWriter == null) {
+            try {
+                stringsWriter = new BufferedWriter(new FileWriter(path + prefix + stringOutputName, appendMode));
+            } catch (IOException e) {
+                throw new RuntimeException("Something went wrong while creating the FileOutputWriter.\n" + e + ".");
+            }
+        }
         try {
             stringsWriter.write(strVal + "\n");
             stringsWriter.flush();

@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main { //options: -o, -p, -a, -s, -f
+public class Main {
+    //TODO чтоб не создавались заведомо пустые файлы
+    //TODO обработка ошибок
+    //TODO сделать код чище в FileOutputWriter
     public static void main(String[] args) {
         List<String> fileNames = new ArrayList<>();
         String path = "";

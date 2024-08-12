@@ -16,7 +16,6 @@ public class FileDataHandler implements DataHandler{
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
                 String line;
                 while ((((line = bufferedReader.readLine()) != null))) {
-                    System.out.println(Thread.currentThread().getName() + "read \"" + line +"\"");
                     dataFilter.filter(line);
                 }
             } catch (FileNotFoundException e) {
