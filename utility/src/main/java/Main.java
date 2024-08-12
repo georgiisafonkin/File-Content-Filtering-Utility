@@ -41,10 +41,11 @@ public class Main { //options: -o, -p, -a, -s, -f
             ++i;
         }
 
-        //preparation
         StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
         DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
+
         dataHandler.handle();
+
         switch (statisticsMode) {
             case NONE:
                 break;
