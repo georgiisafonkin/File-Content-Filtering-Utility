@@ -41,17 +41,21 @@ public class Main { //options: -o, -p, -a, -s, -f
             ++i;
         }
 
-        StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
-        DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
+        try {
+            StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
+            DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
 
-        dataHandler.handle();
+            dataHandler.handle();
 
-        switch (statisticsMode) {
-            case NONE:
-                break;
-            default:
-                System.out.println(statisticsHandler.statistics());
-                break;
+            switch (statisticsMode) {
+                case NONE:
+                    break;
+                default:
+                    System.out.println(statisticsHandler.statistics());
+                    break;
+            }
+        } catch (IOException e) {
+            System.out.println("Something went wrong while creating the OutputWriter.\n" + e + ".\n" + "Check the correctness of your input.");
         }
     }
 }
