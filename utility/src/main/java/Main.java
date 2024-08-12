@@ -5,9 +5,7 @@ import java.util.List;
 
 public class Main { //options: -o, -p, -a, -s, -f
     public static void main(String[] args) {
-        List<String> options = new ArrayList<>();
         List<String> fileNames = new ArrayList<>();
-        List<String> other = new ArrayList<>();
         String path = "";
         String prefix = "";
         boolean appendMode = false;
