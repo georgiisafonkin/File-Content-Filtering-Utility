@@ -11,40 +11,38 @@ public class Main { //options: -o, -p, -a, -s, -f
         String path = "";
         String prefix = "";
         boolean appendMode = false;
-        //cmd input parsing
-        for (String word: args) {
-            if (word.matches("-([a-zA-Z])")) {
-                options.add(word);
+        StatisticsModes statisticsMode = StatisticsModes.NONE;
+
+        //input parsing
+        int i = 0;
+        while( i < args.length) {
+            if (args[i].matches("-([a-zA-Z])")) {
+                switch (args[i]) {
+                    case "-s":
+                        statisticsMode = StatisticsModes.SHORT;
+                        break;
+                    case "-f":
+                        statisticsMode = StatisticsModes.FULL;
+                        break;
+                    case "-o":
+                        path = args[++i] + "/";
+                        break;
+                    case "-p":
+                        prefix = args[++i];
+                        break;
+                    case "-a":
+                        appendMode = true;
+                        break;
+                    default:
+                        break;
+                }
             }
-            else if (word.matches("([a-zA-Z0-9_]+\\.txt)")) {
-                fileNames.add(word);
+            else if (args[i].matches("([a-zA-Z0-9_]+\\.txt)")) {
+                fileNames.add(args[i]);
             }
-            else {
-                other.add(word);
-            }
+            ++i;
         }
 
-        StatisticsModes statisticsMode = StatisticsModes.NONE;
-        //checking flags
-        for (String option: options) {
-            switch (option) {
-                case "-s":
-                    statisticsMode = StatisticsModes.SHORT;
-                    break;
-                case "-f":
-                    statisticsMode = StatisticsModes.FULL;
-                    break;
-                case "-o":
-                    break;
-                case "-p":
-                    break;
-                case "-a":
-                    appendMode = true;
-                    break;
-                default:
-                    break;
-            }
-        }
         //preparation
         StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
         DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));

@@ -13,7 +13,7 @@ public class FileOutputWriter implements OutputWriter {
     private  final BufferedWriter integersWriter;
     private  final BufferedWriter floatWriter;
     private boolean fileCreationFlag = false; //flag to show if File Writer created files for output or not
-    public FileOutputWriter(String path, String prefix, boolean appendMode) { //TODO THROWS IOEXCEPTION
+    public FileOutputWriter(String path, String prefix, boolean appendMode) {
         this.path = path;
         this.prefix = prefix;
         try {
