@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    //TODO чтоб не создавались заведомо пустые файлы
-    //TODO обработка ошибок
-    //TODO сделать код чище в FileOutputWriter
     public static void main(String[] args) {
         List<String> fileNames = new ArrayList<>();
         String path = "";
