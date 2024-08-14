@@ -1,26 +1,21 @@
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileOutputWriter implements OutputWriter {
-    private String stringOutputName = "strings.txt";
-    private String integerOutputName = "integers.txt";
-    private String floatOutputName = "floats.txt";
-    private String path;
-    private String prefix;
-    private boolean appendMode;
+    private final String stringOutputName = "strings.txt";
+    private final String integerOutputName = "integers.txt";
+    private final String floatOutputName = "floats.txt";
+    private final String path;
+    private final String prefix;
+    private final boolean appendMode;
     private BufferedWriter stringsWriter = null;
     private BufferedWriter integersWriter = null;
     private BufferedWriter floatWriter = null;
-    private boolean fileCreationFlag = false; //flag to show if File Writer created files for output or not
-    public FileOutputWriter(String path, String prefix, boolean appendMode) throws IOException {
+    public FileOutputWriter(String path, String prefix, boolean appendMode) {
         this.path = path;
         this.prefix = prefix;
         this.appendMode = appendMode;
-//        stringsWriter = new BufferedWriter(new FileWriter(path + prefix + stringOutputName, appendMode));
-//        integersWriter = new BufferedWriter(new FileWriter(path + prefix + integerOutputName, appendMode));
-//        floatWriter = new BufferedWriter(new FileWriter(path + prefix + floatOutputName, appendMode));
     }
     @Override
     public void writeInt(String intVal) {

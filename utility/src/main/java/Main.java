@@ -1,9 +1,8 @@
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
+    //TODO навести порядок в Main, убрать не нужный try-catch
     public static void main(String[] args) {
         List<String> fileNames = new ArrayList<>();
         String path = "";
@@ -41,21 +40,13 @@ public class Main {
             ++i;
         }
 
-        try {
-            StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
-            DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
+        StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
+        DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
 
-            dataHandler.handle();
+        dataHandler.handle();
 
-            switch (statisticsMode) {
-                case NONE:
-                    break;
-                default:
-                    System.out.println(statisticsHandler.statistics());
-                    break;
-            }
-        } catch (IOException e) {
-            System.out.println("Something went wrong while creating the OutputWriter.\n" + e + ".\n" + "Check the correctness of your input.");
+        if (statisticsMode != StatisticsModes.NONE) {
+            System.out.println(statisticsHandler.statistics());
         }
     }
 }

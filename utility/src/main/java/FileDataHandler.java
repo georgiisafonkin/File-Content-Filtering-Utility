@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class FileDataHandler implements DataHandler{
-    private List<String> fileNames;
-    private DataFilter dataFilter;
+    private final List<String> fileNames;
+    private final DataFilter dataFilter;
     public FileDataHandler(List<String> fileNames, DataFilter dataFilter) {
         this.fileNames = fileNames;
         this.dataFilter = dataFilter;
@@ -24,8 +24,5 @@ public class FileDataHandler implements DataHandler{
                 throw new RuntimeException("Something went wrong while reading the data.\n Reason: " + e + ".");
             }
         }
-    }
-    public void setFileNames(List<String> fileNames) {
-        this.fileNames = fileNames;
     }
 }
