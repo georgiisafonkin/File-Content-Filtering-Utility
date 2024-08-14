@@ -8,7 +8,7 @@ public class ShortStatisticsHandler implements StatisticsHandler {
     }
 
     @Override
-    public void handleInt(Long intVal) {
+    public void handleInt(long intVal) {
         ++intElementsNumber;
     }
 

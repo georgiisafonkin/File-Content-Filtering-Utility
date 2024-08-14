@@ -15,7 +15,7 @@ public class FullStatisticsHandler extends ShortStatisticsHandler implements Sta
     }
 
     @Override
-    public void handleInt(Long integerVal) {
+    public void handleInt(long integerVal) {
         super.handleInt(integerVal);
         minInteger = Math.min(integerVal, minInteger);
         maxInteger = Math.max(integerVal, maxInteger);
