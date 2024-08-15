@@ -4,7 +4,7 @@
 **Система сборки Maven 3.9.5**
 
 ```terminal
-mvn clean package - сборка проекта при помощи Maven
+mvn clean package - сборка проекта при помощи Maven (выполнять из каталога utility)
 java -cp <путь до utility-1.0-SNAPSHOT.jar> Main <опции> <имена файлов> - запуск утилиты
 ```
 
