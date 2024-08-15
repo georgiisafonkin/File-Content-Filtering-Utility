@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    //TODO навести порядок в Main, убрать не нужный try-catch
     public static void main(String[] args) {
         List<String> fileNames = new ArrayList<>();
         String path = "";
@@ -39,6 +38,8 @@ public class Main {
             }
             ++i;
         }
+
+        //
 
         StatisticsHandler statisticsHandler = StatisticsHandlers.newStatisticHandler(statisticsMode);
         DataHandler dataHandler = new FileDataHandler(fileNames, new RegExFilter(new FileOutputWriter(path, prefix, appendMode), statisticsHandler));
