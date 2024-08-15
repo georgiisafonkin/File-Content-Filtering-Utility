@@ -5,6 +5,6 @@
 
 *Инструкция по сборке*
 
-1. Собрать с помощью Maven, введя команду "mvn clean package"
+1. Собрать с помощью Maven, введя команду mvn clean package
 
 2. Запустить с помощью команды java -cp <путь до utility-1.0-SNAPSHOT.jar> Main <опции> <имена файлов>
