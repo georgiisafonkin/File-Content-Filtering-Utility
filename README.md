@@ -9,4 +9,5 @@ java -cp <путь до utility-1.0-SNAPSHOT.jar> Main <опции> <имена 
 ```
 
 # UML-схема проекта
-![uml1](https://github.com/user-attachments/assets/679efc69-9475-4052-a805-ec1d578c719e)
+![uml1](https://github.com/user-attachments/assets/043b93f7-a497-415b-9119-6c6e3ef876d0)
+
