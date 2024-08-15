@@ -33,7 +33,7 @@ public class Main {
                         break;
                 }
             }
-            else if (args[i].matches("([a-zA-Z0-9_]+\\.txt)")) {
+            else if (args[i].matches("([a-zA-Z0-9_/\\\\-]+\\.txt)")) {
                 fileNames.add(args[i]);
             }
             ++i;

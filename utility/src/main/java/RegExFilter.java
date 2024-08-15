@@ -1,7 +1,7 @@
 
 public class RegExFilter implements DataFilter {
-    OutputWriter outputWriter;
-    StatisticsHandler statisticsHandler;
+    private OutputWriter outputWriter;
+    private StatisticsHandler statisticsHandler;
     public RegExFilter(OutputWriter outputWriter, StatisticsHandler statisticsHandler) {
         this.outputWriter = outputWriter;
         this.statisticsHandler = statisticsHandler;
